@@ -267,3 +267,32 @@ registration code::
                          methods=['GET', 'PUT', 'DELETE'])
 
     register_api(UserAPI, 'user_api', '/users/', pk='user_id')
+
+Alternatively, you can use a Blueprint and the ``@route`` decorator::
+
+    from flask import Blueprint
+
+    api = Blueprint("api", __name__)
+
+    @api.route("/users")
+    @api.route("/users/<user_id>")
+    class UserAPI(MethodView)
+        def get(self, user_id=None):
+            if user_id is None:
+                # return a list of users
+                pass
+            else:
+                # return a single user
+                pass
+
+        def post(self):
+            # create a new user
+            pass
+
+        def delete(self, user_id):
+            # delete a single user
+            pass
+
+        def put(self, user_id):
+            # update a single user
+            pass
