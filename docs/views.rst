@@ -157,6 +157,16 @@ leverage the benefits of blueprints such as ``url_prefix``::
             user = User.from_form_data(request.form)
             ...
 
+.. note::
+
+    The :meth:`Blueprint.route` decorator, when applied to
+    :class:`~flask.views.View` and :class:`~flask.views.MethodView` classes,
+    is a shortcut for simple cases. It:
+
+    +   Does not pass any *class arguments*.
+    +   Will set the endpoint to the blueprint name dotted with the class
+        name. In the example above, the endpoint is ``api.UserAPI``.
+
 
 Decorating Views
 ----------------
